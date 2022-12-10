@@ -1,0 +1,100 @@
+from news.models import *
+from django.db.models import Sum
+from django.db import models
+from django.contrib.auth import models as models_
+import datetime
+
+
+
+user3 = User.objects.create(username = "Михаил Б.С.", password = "asfdrn", nameuser='Михаил Б.С.')
+user4 = User.objects.create(username = "Фёдор П.Ю.", password = "jfkong", nameuser='Фёдор П.Ю.')
+
+author1 = Author.objects.create(user=user3)
+author2 = Author.objects.create(user=user4)
+
+category1 = Category.objects.create(category_name = "Спорт")
+category2 = Category.objects.create(category_name = "Политика")
+category3 = Category.objects.create(category_name = "Технологии")
+category4 = Category.objects.create(category_name = "Образование")
+
+
+post1 = Post.objects.create(author = author1, type=Post.article, title='Заголовок post1', text='Текстpost1Текстpost1Текстpost1Текстpost1')
+post2 = Post.objects.create(author = author1, type=Post.article, title='Заголовок post2', text='Текстpost2Текстpost2Текстpost2Текстpost2')
+post3 = Post.objects.create(author = author2, type=Post.news, title='Заголовок post3', text='Текстpost3Текстpost3Текстpost3Текстpost33')
+
+
+postcategory1 = PostCategory.objects.create(post=post1, category=category1)
+postcategory2 = PostCategory.objects.create(post=post1, category=category2)
+postcategory3 = PostCategory.objects.create(post=post2, category=category3) 
+postcategory4 = PostCategory.objects.create(post=post2, category=category4)
+postcategory5 = PostCategory.objects.create(post=post3, category=category2)
+postcategory6 = PostCategory.objects.create(post=post3, category=category4)
+
+comment1 = Comment.objects.create(post=post1, user=user3, text='Коментарий пользователя 3')
+comment2 = Comment.objects.create(post=post2, user=user3, text='Коментарий пользователя 3')
+comment3 = Comment.objects.create(post=post3, user=user4, text='Коментарий пользователя 4')
+comment4 = Comment.objects.create(post=post3, user=user3, text='Коментарий пользователя 3')
+
+post1.like()
+post1.like()
+post1.dislike()
+post1.like()
+post1.like()
+
+post2.like()
+post2.dislike()
+post2.dislike()
+post2.dislike()
+post2.like()
+
+post3.like()
+post3.like()
+
+comment2.like()
+comment2.dislike()
+comment2.like()
+comment2.like()
+comment3.like()
+comment3.like()
+comment3.dislike()
+
+
+rating1 = Post.objects.filter(author_id=1).aggregate(Sum("rating"))['rating__sum']
+rating2 = Comment.objects.filter(user_id=3).aggregate(Sum("rating"))['rating__sum']
+rating3 = Post.objects.filter(author_id=1).values('rating')
+rating4 = sum([i['rating'] * 3  for i in rating3])
+rating = rating1 + rating2 + rating4
+
+author1.update_rating(rating)
+
+rating1 = Post.objects.filter(author_id=2).aggregate(Sum("rating"))['rating__sum']
+rating2 = Comment.objects.filter(user_id=4).aggregate(Sum("rating"))['rating__sum']
+rating3 = Post.objects.filter(author_id=2).values('rating')
+rating4 = sum([i['rating'] * 3  for i in rating3])
+rating = rating1 + rating2 + rating4
+
+author2.update_rating(rating)
+
+
+author_best = Author.objects.all().order_by('-_rating').first()
+author_best_id = author_best.user_id
+
+
+
+post_best = Post.objects.all().order_by('-rating').first()
+datafield = post_best.time_in
+datafield = datafield.strftime("%m/%d/%Y  %H:%M")
+
+
+id = Author.objects.all().get(id=post_best.author_id).user_id
+author = User.objects.all().get(nameuser_id=id).nameuser
+
+print(f'Имя лучшего пользователя: {User.objects.all().get(nameuser_id=author_best_id).nameuser} ')
+print(f'Его рейтинг: {author_best._rating}')
+
+print(f'Лучшая статья: Дата добавления - {datafield} Автор - {author} Рейтинг - {post_best.rating} ')
+print(f'{post_best.title}')
+print(f'Превью: {post_best.preview()}')
+
+comment = Comment.objects.filter(post_id=post_best.id)
+[print(f'{i["date"].strftime("%m/%d/%Y  %H:%M")} \n Юзер:{i["user"]} \n Рейтинг:{i["rating"]} \n {i["text"]} ') for i in comment.values('date', 'user', 'rating', 'text')]
