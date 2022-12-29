@@ -1,7 +1,7 @@
 ﻿python -m venv venv
 pip install django
 python -m pip install django-filter==21.1
-django-admin startproject project
+django-admin startproject project #создание проекта
 
 
 venv\scripts\activate
@@ -12,6 +12,8 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py shell
 quit()
+
+python manage.py startapp +имя приложения #создание приложения
 
 
 
