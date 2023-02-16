@@ -1,0 +1,48 @@
+﻿python -m venv venv     sudo apt-get install -y python3-venv + python3 -m venv venv
+pip install --upgrade pip
+pip install django
+python -m pip install django-filter==21.1
+pip install django-allauth
+
+
+
+
+venv\scripts\activate   source venv/bin/activate
+cd NewsPaper
+cd project
+
+python manage.py migrate
+python manage.py runserver
+python manage.py makemigrations
+python manage.py shell
+quit()
+
+
+
+django-admin startproject имя проекта   #создание нового проекта
+python manage.py startapp sign      #создания нового приложения в проекте
+
+
+
+Итого мы вырезали лишнее из шаблона index.html, из архива мы ещё добавили специальные теги для поиска статических
+файлов. Дело в том, что изначально в шаблоне был указан абсолютный путь, предполагая, что он лежит в той же папке где и
+все статические файлы. Но поскольку мы перенесли шаблон в нашу папку flatpages/default.html, а все остальные файлы
+ остались лежать там же, где и были, мы можем прописать статический путь так, чтобы потом не приходилось его везде
+ менять, если он вдруг изменится, как мы это делали минуту назад с шаблонами. Для этого надо в самом начале HTML-файла
+ дописать {% load static %}, чтобы получить доступ к статическим файлам. И перед каждой гиперссылкой или ресурсом надо
+ просто писать тег {% static %}, а сам путь взять в кавычки. Таким образом Django сам поможет нам и подставит путь к
+ статическим файлам за нас. Никаких абсолютных путей — чудесно!
+
+
+P.S. Если вы вдруг испытываете трудности с подгонкой шаблона под ваш проект, то вы в любой момент можете пройти по
+ссылке на GitHub и склонировать полностью рабочий репозиторий.
+https://github.com/SkillfactoryCoding/django_tutorial
+
+
+
+После установки Django создаём пустой проект:
+django-admin startproject project
+
+После того как наша база данных заработала (и появилось место для хранения информации), мы можем создать нашего первого
+администратора. У админа должен быть свой логин и пароль для входа в систему. Давайте его создадим командой:
+python manage.py createsuperuser

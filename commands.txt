@@ -1,0 +1,124 @@
+from news.models import *
+from django.db.models import Sum
+from django.db import models
+from django.contrib.auth import models as models_
+import datetime
+
+
+
+
+user4 = User.objects.create(username = "Фёдор П.Ю.", password = "jfkong", nameuser='Фёдор П.Ю.')
+user6 = User.objects.create(username = "Максим А.К.", password = "jfkong", nameuser='Максим А.К.')
+user7 = User.objects.create(username = "Дмитрий А.В.", password = "jfkong", nameuser='Дмитрий А.В.')
+
+
+author1 = Author.objects.create(user=user4)
+author2 = Author.objects.create(user=user6)
+author3 = Author.objects.create(user=user7)
+
+
+category1 = Category.objects.create(category_name = "Спорт")
+category2 = Category.objects.create(category_name = "Политика")
+category3 = Category.objects.create(category_name = "Технологии")
+category4 = Category.objects.create(category_name = "Образование")
+
+
+post1 = Post.objects.create(author = author3, author_name = "Дмитрий А.В.", type=Post.news, title='Новость Н', text='Нв')
+post2 = Post.objects.create(author = author2, author_name = "Максим А.К.", type=Post.news, title='Новость М', text='Мырвоаы выоврыавы довыловар овра лыовравы аодвыар')
+post3 = Post.objects.create(author = author3, author_name = "Дмитрий А.В.", type=Post.news, title='Новость У', text='У ыовалоравыо ыврвлодрыовраоврыавы раовфырдо арвыра')
+post4 = Post.objects.create(author = author2, author_name = "Максим А.К.", type=Post.article, title='Заголовок', text='Сврпавып аыврапы выоваы лвы оврапвыра выаыа плвы')
+post5 = Post.objects.create(author = author3, author_name = "Дмитрий А.В.", type=Post.article, title='Заголовок', text='Сврпавып аыврапы выоваы лвы оврапвыра выаыа плвы')
+post6 = Post.objects.create(author = author2, author_name = "Максим А.К.", type=Post.news, title='Заголовок', text='Сврпавып аыврапы выоваы лвы оврапвыра выаыа плвы')
+post7 = Post.objects.create(author = author3, author_name = "Дмитрий А.В.", type=Post.article, title='Заголовок', text='Сврпавып аыврапы выоваы лвы оврапвыра выаыа плвы')
+post8 = Post.objects.create(author = author2, author_name = "Максим А.К.", type=Post.article, title='Заголовок', text='Сврпавып аыврапы выоваы лвы оврапвыра выаыа плвы')
+post9 = Post.objects.create(author = author3, author_name = "Дмитрий А.В.", type=Post.news, title='Заголовок', text='Очддвылсвыд свы лс овыжоравы л ылд осжл сжды осжлды')
+post10 = Post.objects.create(author = author2, author_name = "Максим А.К.", type=Post.article, title='Заголовок', text='Що чвроывовы овыраовырарода выаврыоа рвыроаывыоа')
+
+
+
+
+postcategory1 = PostCategory.objects.create(post=post1, category=category1)
+postcategory2 = PostCategory.objects.create(post=post2, category=category2)
+postcategory3 = PostCategory.objects.create(post=post3, category=category3) 
+postcategory4 = PostCategory.objects.create(post=post4, category=category4)
+postcategory5 = PostCategory.objects.create(post=post5, category=category2)
+postcategory6 = PostCategory.objects.create(post=post6, category=category4)
+postcategory7 = PostCategory.objects.create(post=post7, category=category4)
+postcategory8 = PostCategory.objects.create(post=post8, category=category4)
+postcategory9 = PostCategory.objects.create(post=post9, category=category4)
+postcategory10 = PostCategory.objects.create(post=post10, category=category4)
+
+
+
+comment1 = Comment.objects.create(post=post1, user=user6, text='Коментарий пользователя 3')
+comment2 = Comment.objects.create(post=post2, user=user7, text='Коментарий пользователя 3')
+comment3 = Comment.objects.create(post=post3, user=user6, text='Коментарий пользователя 4')
+comment4 = Comment.objects.create(post=post3, user=user7, text='Коментарий пользователя 3')
+
+
+
+post2.like()
+post2.dislike()
+post2.dislike()
+post2.dislike()
+post2.like()
+
+post3.like()
+post3.like()
+
+comment2.like()
+comment2.dislike()
+comment2.like()
+comment2.like()
+comment3.like()
+comment3.like()
+comment3.dislike()
+
+
+rating1 = Post.objects.filter(author_id=1).aggregate(Sum("rating"))['rating__sum']
+rating2 = Comment.objects.filter(user_id=3).aggregate(Sum("rating"))['rating__sum']
+rating3 = Post.objects.filter(author_id=1).values('rating')
+rating4 = sum([i['rating'] * 3  for i in rating3])
+rating = rating1 + rating2 + rating4
+
+author1.update_rating(rating)
+
+rating1 = Post.objects.filter(author_id=2).aggregate(Sum("rating"))['rating__sum']
+rating2 = Comment.objects.filter(user_id=4).aggregate(Sum("rating"))['rating__sum']
+rating3 = Post.objects.filter(author_id=2).values('rating')
+rating4 = sum([i['rating'] * 3  for i in rating3])
+rating = rating1 + rating2 + rating4
+
+author2.update_rating(rating)
+
+
+author_best = Author.objects.all().order_by('-_rating').first()
+author_best_id = author_best.user_id
+
+
+
+post_best = Post.objects.all().order_by('-rating').first()
+datafield = post_best.time_in
+datafield = datafield.strftime("%m/%d/%Y  %H:%M")
+
+
+id = Author.objects.all().get(id=post_best.author_id).user_id
+author = User.objects.all().get(nameuser_id=id).nameuser
+
+print(f'Имя лучшего пользователя: {User.objects.all().get(nameuser_id=author_best_id).nameuser} ')
+print(f'Его рейтинг: {author_best._rating}')
+
+print(f'Лучшая статья: Дата добавления - {datafield} Автор - {author} Рейтинг - {post_best.rating} ')
+print(f'{post_best.title}')
+print(f'Превью: {post_best.preview()}')
+
+comment = Comment.objects.filter(post_id=post_best.id)
+[print(f'{i["date"].strftime("%m/%d/%Y  %H:%M")} \n Юзер:{i["user"]} \n Рейтинг:{i["rating"]} \n {i["text"]} ') for i in comment.values('date', 'user', 'rating', 'text')]
+
+
+
+f = ProductForm({'author':'author3', 'author_name':'Дмитрий А.В.', 'type':'Post.news', 'title':'Новость Н','text':'Нв'})
+
+f = ProductForm({'author':'4', 'author_name':'Дмитрий А.В.', 'type':'N', 'title':'Нcvbvcbvcbvcbvcbvcbcv.,m.,m.,m.vc,bm.,mв', 'text':'Нcvbvcbvcbvcbvcbvcbcv.,m.,m.,m.vc,bm.,mв', 'category': ['1'], 'rating': '100'})
+
+
