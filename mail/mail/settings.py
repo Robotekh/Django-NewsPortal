@@ -38,8 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'appointment'
+    'appointment',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +77,14 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'mail.wsgi.application'
@@ -129,7 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
 EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
 EMAIL_HOST_USER = 'svetlakov.dmtry'  # ваше имя пользователя, например, если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
-EMAIL_HOST_PASSWORD = 'isenqfvtcroeclai'  # пароль от почты
+EMAIL_HOST_PASSWORD = ''  # пароль от почты
 EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это, почитайте в дополнительных источниках, но включать его здесь обязательно
 
 
@@ -139,3 +157,6 @@ ADMINS = [
     # список всех админов в формате ('имя', 'их почта')
 ]
 SERVER_EMAIL = 'svetlakov.dmtry@yandex.ru'  # это будет у нас вместо аргумента FROM в массовой рассылке
+
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER + '@yandex.ru'  # здесь указываем уже свою ПОЛНУЮ почту, с которой будут отправляться письма
