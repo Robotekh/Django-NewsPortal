@@ -22,10 +22,15 @@ Posts
 <h5>{{ posts|length }}</h5>
 
 {% for post in posts %}
-<h5> {{ post.title }}</h5>
-<h5>{{ post.time_in|date:'d M Y' }}</h5>
-<h5>{{ post.text|truncatewords:20 }}</h5>
-<h5>{{ post.author_name }}</h5>
+    <h5> {{ post.title }}</h5>
+    <h5>{{ post.time_in|date:'d M Y' }}</h5>
+    <h5>{{ post.text|truncatewords:20 }}</h5>
+    <h5>{{ post.author_name }}</h5>
+        <h5>Категории:</h5>
+        {%for category in post.category.all %}
+            <a href="{% url 'category_list' category.id %}">{{ category }}</a>
+        {% endfor %}
+        <h5>{{ post.type }}</h5>
     <h5>{{ post.type }}</h5>
 
 <h5>------------------------------</h5>

@@ -4,13 +4,13 @@ from typing import Dict, Any
 
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 
@@ -31,7 +31,7 @@ class PostsList(ListView):
     context_object_name = 'posts'
     paginate_by = 15  # вот так мы можем указать количество записей на странице
 
-    # Переопределяем функцию получения списка товаров
+    # Переопределяем функцию получения списка постов
     def get_queryset(self):
         # Получаем обычный запрос
         queryset = super().get_queryset()
@@ -52,11 +52,11 @@ class PostsList(ListView):
 
 
 class PostDetail(DetailView):
-    # Модель всё та же, но мы хотим получать информацию по отдельному товару
+    # Модель всё та же, но мы хотим получать информацию по отдельному посту
     model = Post
     # Используем другой шаблон — post.html
     template_name = 'post.html'
-    # Название объекта, в котором будет выбранный пользователем продукт
+    # Название объекта, в котором будет выбранный пользователем пост
     context_object_name = 'post'
 
 
@@ -115,6 +115,21 @@ class PostDelete(DeleteView):
 # class ProtectedView(LoginRequiredMixin, TemplateView):
 #     template_name = 'prodected_page.html'
 
+class CategoryListView(ListView):
+    model = Post
+    template_name = 'category_list.html'
+    context_object_name = 'category_news_list'
+
+    def get_queryset(self):
+        self.category_name = get_object_or_404(Category, id=self.kwargs['pk'])
+        queryset = Post.objects.filter(category=self.category_name).order_by('-time_in')
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_not_subscriber'] = self.request.user not in self.category_name.subscribers.all()
+        context['category'] = self.category_name
+        return context
 
 @login_required
 def upgrade_me(request):
@@ -123,3 +138,12 @@ def upgrade_me(request):
     if not request.user.groups.filter(name='authors').exists():
         premium_group.user_set.add(user)
     return redirect('/news/')
+
+@login_required
+def subscribe(request, pk):
+    user = request.user
+    category = Category.objects.get(id=pk)
+    category.subscribers.add(user)
+
+    message = 'Вы успешно подписались на рассылку новостей категорий'
+    return render(request, 'subscribe.html', {'category': category, 'message': message})

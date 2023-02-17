@@ -1,23 +1,21 @@
 from datetime import datetime
-
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth import models as models_
+from django.contrib.auth.models import User
 
 
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
-
 from django.db.models import Sum
 
 
 class Category(models.Model):
     category_name = models.CharField(max_length=150, unique=True)
+    subscribers = models.ManyToManyField(User, blank=True, null=True, related_name='categories')
 
-
-class User(models_.User):
-    nameuser_id = models.AutoField(primary_key=True)
-    nameuser = models.CharField(max_length=150, unique=True)
+    def __str__(self):
+        return self.category_name
 
 
 class Author(models.Model):
@@ -72,7 +70,9 @@ class PostCategory(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name.title()
+        # Изначально был return self.name.title()
+        # Работает кроме админки self.category
+        return self.category.__str__()
 
 
 class Comment(models.Model):
