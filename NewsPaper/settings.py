@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'fpages',
 
-    'news',
+    'news.apps.NewsConfig',
     'accounts',
     'mc_donalds',
     'django_filters',
@@ -179,3 +179,15 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 # вместо формы по умолчанию, необходимо добавить строчку в файл настроек проекта settings.py:
 ACCOUNT_FORMS = {'signup': 'news.models.BasicSignupForm'}
 
+
+#Для отправки почты
+EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
+EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_USER = 'svetlakov.dmtry'  # ваше имя пользователя, например, если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = ''  # пароль от почты
+EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это, почитайте в дополнительных источниках, но включать его здесь обязательно
+SITE_URL = 'http://127.0.0.1:8000'
+#DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = 'svetlakov.dmtry@yandex.ru'
