@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'appointment',
+    # надо указать не имя нашего приложения, а его конфиг, чтобы всё заработало
+    'appointment.apps.AppointmentConfig',
     'django.contrib.sites',
 
     'allauth',
@@ -156,6 +156,11 @@ ADMINS = [
     ('Dmitrij', 'svetlakov.dmtry@yandex.ru'),
     # список всех админов в формате ('имя', 'их почта')
 ]
+
+MANAGERS = [
+    ('Dmitrij', 'svetlakov.dmtry@yandex.ru'),
+]
+
 SERVER_EMAIL = 'svetlakov.dmtry@yandex.ru'  # это будет у нас вместо аргумента FROM в массовой рассылке
 
 

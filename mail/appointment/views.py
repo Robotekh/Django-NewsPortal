@@ -3,9 +3,15 @@ from django.views import View
 from django.core.mail import EmailMultiAlternatives  # импортируем класс для создание объекта письма с html
 from datetime import datetime
 from django.core.mail import mail_admins # импортируем функцию для массовой отправки писем админам
-
 from django.template.loader import render_to_string  # импортируем функцию, которая срендерит наш html в текст
 from .models import Appointment
+
+
+
+
+
+# коннектим наш сигнал к функции обработчику и указываем, к какой именно модели после сохранения привязать функцию
+# post_save.connect(notify_managers_appointment, sender=Appointment)
 
 
 class AppointmentView(View):
@@ -39,9 +45,9 @@ class AppointmentView(View):
         #
         # msg.send()  # отсылаем
 
-        mail_admins(
-            subject=f'{appointment.client_name} {appointment.date.strftime("%d %m %Y")}',
-            message=appointment.message,
-        )
+        # mail_admins(
+        #     subject=f'{appointment.client_name} {appointment.date.strftime("%d %m %Y")}',
+        #     message=appointment.message,
+        # )
 
         return redirect('appointments:make_appointment')
