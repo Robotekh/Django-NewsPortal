@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9e4554b1-8e78-4afc-b75e-2d953af9dc64" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/NewsPaper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NewsPaper.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mail/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail/mail/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mail/mail/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/python" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/python3" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/python3.10" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python3.10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/REQUESTED" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip-23.0.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/build_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/build_env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/cli/cmdoptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/cli/cmdoptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/commands/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/commands/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/commands/install.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/commands/install.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/commands/uninstall.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/commands/uninstall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/locations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/locations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/locations/_distutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/locations/_distutils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/locations/_sysconfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/locations/_sysconfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/models/direct_url.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.10/site-packages/pip/_internal/models/direct_url.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LxefTh9C3cHjWuBfDVarWArim0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e4554b1-8e78-4afc-b75e-2d953af9dc64" name="Changes" comment="" />
+      <created>1676817266347</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676817266347</updated>
+    </task>
+    <servers />
+  </component>
+</project>
