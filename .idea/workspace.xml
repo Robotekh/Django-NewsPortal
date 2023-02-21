@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9e4554b1-8e78-4afc-b75e-2d953af9dc64" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instrument.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instrument.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail/appointment/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/mail/appointment/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail/appointment/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/mail/appointment/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mail/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail/mail/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mail/mail/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/management/commands/runapscheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/management/commands/runapscheduler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +36,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mail/appointment/management" />
