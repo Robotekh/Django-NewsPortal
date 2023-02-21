@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.google',
 
+    'django_apscheduler',
+
 ]
 
 
@@ -172,7 +174,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-#ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 #Чтобы allauth распознал нашу форму как ту, что должна выполняться
 # вместо формы по умолчанию, необходимо добавить строчку в файл настроек проекта settings.py:
@@ -185,7 +187,7 @@ EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
 # EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_USER = 'svetlakov.dmtry'  # ваше имя пользователя, например, если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
 # EMAIL_HOST_USER = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_HOST_PASSWORD = 'tmwxttngccjhnnyd'  # пароль от почты
+EMAIL_HOST_PASSWORD = ''  # пароль от почты
 EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это, почитайте в дополнительных источниках, но включать его здесь обязательно
 SITE_URL = 'http://127.0.0.1:8000'
 #DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
@@ -193,3 +195,10 @@ DEFAULT_FROM_EMAIL = 'svetlakov.dmtry@yandex.ru'
 
 # if DEBUG:
 #     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# формат даты, которую будет воспринимать наш задачник (вспоминаем модуль по фильтрам)
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+
+# если задача не выполняется за 25 секунд, то она автоматически снимается, можете поставить время побольше, но как правило, это сильно бьёт по производительности сервера
+APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
