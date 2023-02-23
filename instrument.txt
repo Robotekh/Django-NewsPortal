@@ -4,20 +4,35 @@ pip install django
 python -m pip install django-filter==21.1
 pip install django-allauth
 pip install apscheduler      pip install django-apscheduler
+pip3 install celery
 
+Далее нам нужно настроить поддержку Redis в Python и Celery. Вновь зайдите в виртуальное окружение и установите следующие пакеты:
+pip3 install redis
+pip3 install -U "celery[redis]"
 
 
 
 venv\scripts\activate   source venv/bin/activate
 cd NewsPaper
 cd project
+cd mcdonalds
 
 python manage.py migrate
 python manage.py runserver
 python manage.py makemigrations
 python manage.py shell
 quit()
+python manage.py runapscheduler
 
+Для запуска задач по расписанию, а именно это нам и понадобится сейчас, необходимо запускать Celery с флагом -B, который позволяет запускать периодические задачи:
+$ celery -A NewsPaper worker -l INFO -B
+
+celery -A mcdonalds worker -l INFO
+
+Также обратите внимание, что Celery с версией выше 4+ не поддерживается Windows. Поэтому если у вас версия Python 3.10 и выше, запускайте Celery, добавив в команду флаг: --polo=solo.
+celery -A mcdonalds worker -l INFO --polo=solo
+redis-cli ping
+redis-server
 
 
 django-admin startproject имя проекта   #создание нового проекта

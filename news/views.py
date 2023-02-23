@@ -14,6 +14,9 @@ from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 
+from django.http import HttpResponse
+from .tasks import send_notifications
+
 
 class PostsList(ListView):
     # Указываем модель, объекты которой мы будем выводить
@@ -79,6 +82,11 @@ class PostCreate(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
         post.type = self.request.path.split('/')[1]
         return super().form_valid(form)
 
+    # #Функция для вызова задачи в celery
+    # def get(self, request):
+    #     printer.apply_async([10], countdown = 5) #10-аргумент countdown задержка в секундах
+    #     hello.delay()
+    #     return HttpResponse('Hello!')
 
 # Добавил миксин LoginRequiredMixin для проверки аунтефикации
 class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
