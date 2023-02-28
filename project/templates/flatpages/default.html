@@ -12,6 +12,12 @@
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
+        {% load math_filters %}
+        {% load cache %} <!-- Загружаем кэширование -->
+
+        {% cache 100 number %} <!-- Кэшируем отдельный блок на 100 секунд, айди кэширования -number -->
+            {{ 2|pow:1001999}}
+        {% endcache %}
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
            <div class="container">

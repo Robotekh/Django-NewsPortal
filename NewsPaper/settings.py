@@ -214,3 +214,13 @@ CELERY_RESULT_SERIALIZER = 'json'
 #CELERY_ACCEPT_CONTENT — допустимый формат данных.
 #CELERY_TASK_SERIALIZER — метод сериализации задач.
 #CELERY_RESULT_SERIALIZER — метод сериализации результатов.
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        # Указываем, куда будем сохранять кэшируемые файлы!
+        # Не забываем создать папку cache_files внутри папки с manage.py!
+        'LOCATION': os.path.join(BASE_DIR, 'cache_files'),
+        'TIMEOUT': 60, # добавляем стандартное время ожидания в минуту (по умолчанию это 5 минут — 300 секунд)
+    }
+}

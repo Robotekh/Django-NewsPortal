@@ -9,6 +9,8 @@ from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 from django.db.models import Sum
 
+from django.core.cache import cache
+
 
 class Category(models.Model):
     category_name = models.CharField(max_length=150, unique=True)
@@ -65,6 +67,11 @@ class Post(models.Model):
         return reverse('post_detail', args=[str(self.id)])
         #return f'/news/{self.id}'
 
+    #Функция для перезаприси кэширования при сохранении объекта
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)  # сначала вызываем метод родителя, чтобы объект сохранился
+        cache.delete(f'post_list-{self.pk}')  # затем удаляем его из кэша, чтобы сбросить его
+        cache.delete(f'post_detail-{self.pk}')
 
 class PostCategory(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

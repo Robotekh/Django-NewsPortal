@@ -3,6 +3,8 @@ from .views import (
     ProductsList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
 )
 
+from django.views.decorators.cache import cache_page
+
 urlpatterns = [
    # path — означает путь.
    # В данном случае путь ко всем товарам у нас останется пустым,
@@ -15,6 +17,7 @@ urlpatterns = [
    # int — указывает на то, что принимаются только целочисленные значения
    # path('<int:id>', ProductDetail.as_view()),
     path('', ProductsList.as_view(), name='product_list'),
+# добавим кэширование на детали товара. Раз в 10 минут товар будет записываться в кэш для экономии ресурсов.
     path('<int:pk>', ProductDetail.as_view(), name='product_detail'),
     path('create/', ProductCreate.as_view(), name='product_create'),
     path('<int:pk>/update/', ProductUpdate.as_view(), name='product_update'),

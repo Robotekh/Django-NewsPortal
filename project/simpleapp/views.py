@@ -13,6 +13,10 @@ from .filters import ProductFilter
 from .forms import ProductForm
 from pprint import pprint
 
+#Для кэширования только функций использовать декоратор @cache_page(указать таймаут)
+#from django.views.decorators.cache import cache_page
+
+from django.core.cache import cache
 
 class ProductsList(ListView):
         # Указываем модель, объекты которой мы будем выводить
@@ -69,6 +73,17 @@ class ProductDetail(DetailView):
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'product'
     #pk_url_kwarg = 'id'
+    # добавляем функцию для кэширования страницы
+    def get_object(self, *args, **kwargs):  # переопределяем метод получения объекта, как ни странно
+        obj = cache.get(f'product-{self.kwargs["pk"]}',
+                        None)  # кэш очень похож на словарь, и метод get действует так же. Он забирает значение по ключу, если его нет, то забирает None.
+
+        # если объекта нет в кэше, то получаем его и записываем в кэш
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'product-{self.kwargs["pk"]}', obj)
+
+        return obj
 
 class ProductCreate(CreateView):
     # Указываем нашу разработанную форму
