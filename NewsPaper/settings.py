@@ -194,7 +194,7 @@ DEFAULT_FROM_EMAIL = 'svetlakov.dmtry@yandex.ru'
 
 # if DEBUG:
 #     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+EMAIL_BACKEND = 'svetlakov.dmtry@yandex.ru'
 
 # формат даты, которую будет воспринимать наш задачник (вспоминаем модуль по фильтрам)
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
@@ -224,3 +224,113 @@ CACHES = {
         'TIMEOUT': 60, # добавляем стандартное время ожидания в минуту (по умолчанию это 5 минут — 300 секунд)
     }
 }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'style': '{',
+    'formatters': {
+        'console_d': {
+            'format': '%(asctime)s %(levelname)s %(message)s'
+        },
+        'console_w': {
+            'format': '%(asctime)s %(levelname)s %(message)s %(pathname)s'
+        },
+        'console_e_c': {
+            'format': '%(asctime)s %(levelname)s %(message)s %(pathname)s %(exc_info)s'
+        },
+        'file_g': {
+            'format': '%(asctime)s %(levelname)s %(module)s %(message)s'
+        },
+        'file_e': {
+            'format': '%(asctime)s %(levelname)s %(message)s %(pathname)s %(exc_info)s'
+        }
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'set_level': {
+            'level': 'ERROR'
+        }
+    },
+    'handlers': {
+        'console_d': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'console_d'
+        },
+        'console_w': {
+            'level': 'WARNING',
+            'filters': ['require_debug_true', 'set_level'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'console_w'
+        },
+        'console_e': {
+            'level': 'ERROR',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'console_e_c'
+        },
+        'console_c': {
+            'level': 'CRITICAL',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'console_e_c'
+        },
+        'file_g': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'logging.FileHandler',
+            'formatter': 'file_g',
+            'filename': 'general.log'
+        },
+        'file_e': {
+            'level': 'ERROR',
+            'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'file_e',
+            'filename': 'errors.log'
+        },
+        'file_s': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'file_g',
+            'filename': 'security.log'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'email_backend': 'django.core.mail.backends.filebased.EmailBackend',
+            'formatter': 'console_w'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console_d', 'console_w', 'console_e', 'console_c'],
+        },
+
+        'django.request': {
+            'handlers': ['file_e', 'mail_admins'],
+        },
+        'django.server': {
+            'handlers': ['file_e', 'mail_admins'],
+        },
+        'django.template': {
+            'handlers': ['file_e'],
+        },
+        'django.db.backends': {
+            'handlers': ['file_e'],
+        },
+        'django.security': {
+            'handlers': ['file_s'],
+        }
+    }
+}
+

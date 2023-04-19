@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e4554b1-8e78-4afc-b75e-2d953af9dc64" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/NewsPaper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NewsPaper.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache_files/7a79e39e81ae60e18d749c68dd6623f3.djcache" beforeDir="false" afterPath="$PROJECT_DIR$/cache_files/7a79e39e81ae60e18d749c68dd6623f3.djcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instrument.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instrument.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/cache_files/26fc9e86f67f5c6652aaa6fb20ae6506.djcache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/cache_files/7a79e39e81ae60e18d749c68dd6623f3.djcache" beforeDir="false" afterPath="$PROJECT_DIR$/project/cache_files/7a79e39e81ae60e18d749c68dd6623f3.djcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/simpleapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/simpleapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/simpleapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/simpleapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/python" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/python3" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/bin/python3.10" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/python3.10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib64" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +50,8 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/robotekh/Документы/NewsPaper&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/i/Загрузки/NewsPaper&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalTools&quot;
   }
 }</component>
@@ -56,7 +62,28 @@
       <recent name="$PROJECT_DIR$/mail/appointment/management" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.del">
+    <configuration name="del" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NewsPaper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/del.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="nullfyquantity" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NewsPaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -80,6 +107,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.del" />
         <item itemvalue="Python.nullfyquantity" />
       </list>
     </recent_temporary>

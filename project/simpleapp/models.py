@@ -25,11 +25,18 @@ class Product(models.Model):
         validators=[MinValueValidator(0.0)],
     )
 
+    # допишем свойство, которое будет отображать, есть ли товар на складе
+    @property
+    def on_stock(self):
+        return self.quantity > 0
+
     def __str__(self):
         return f'{self.name.title()}: {self.description[:20]}'
 
     def get_absolute_url(self):
-        return reverse('product_detail', args=[str(self.id)])
+        # добавим абсолютный путь, чтобы после создания нас перебрасывало на страницу с товаром
+        return f'/products/{self.id}'
+        #return reverse('product_detail', args=[str(self.id)])
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)  # сначала вызываем метод родителя, чтобы объект сохранился
@@ -41,4 +48,5 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.name.title()
+        return f'{self.name}'
+        #return self.name.title()
