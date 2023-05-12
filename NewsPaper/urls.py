@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')), # подключаем встроенные эндопинты для работы с локализацией
     path('admin/', admin.site.urls),
     path('pages/', include('django.contrib.flatpages.urls')),
     # # Делаем так, чтобы все адреса из нашего приложения (news/urls.py)
@@ -25,4 +27,8 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('articles/', include('news.urls')),
     path('accounts/', include('allauth.urls')),
+    path('swagger-ui/', TemplateView.as_view(
+        template_name='swagger-ui.html'),
+        name='swagger-ui'),
+
 ]

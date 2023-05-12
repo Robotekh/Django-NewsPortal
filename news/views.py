@@ -4,7 +4,8 @@ from typing import Dict, Any
 
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category
+from django.views import View
+from .models import Post, Category, MyModel
 from .filters import PostFilter
 from .forms import PostForm
 
@@ -16,9 +17,13 @@ from django.contrib.auth.decorators import login_required
 
 from django.core.cache import cache # импортируем наш кэш
 
-from django.http import HttpResponse
+from django.http.response import HttpResponse #  импортируем респонс для проверки текста
 from .tasks import send_notifications
 
+from django.utils.translation import gettext as _ #  импортируем функцию для перевода
+from django.utils.translation import activate, get_supported_language_variant
+from django.utils import timezone
+import pytz #  импортируем стандартный модуль для работы с часовыми поясами
 
 class PostsList(ListView):
     # Указываем модель, объекты которой мы будем выводить
@@ -177,3 +182,24 @@ def subscribe(request, pk):
 
     message = 'Вы успешно подписались на рассылку новостей категорий'
     return render(request, 'subscribe.html', {'category': category, 'message': message})
+
+
+class Index(View):
+    def get(self, request):
+        curent_time = timezone.now()
+
+        # .  Translators: This message appears on the home page only
+        models = MyModel.objects.all()
+
+        context = {
+            'models': models,
+            'current_time': timezone.now(),
+            'timezones': pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
+        }
+
+        return HttpResponse(render(request, 'index.html', context))
+
+    #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/news/lang')

@@ -6,6 +6,8 @@ pip install django-allauth
 pip install apscheduler      pip install django-apscheduler
 pip3 install celery
 pip install flake8
+pip install django-modeltranslation
+pip install django-email-verification
 
 
 Далее нам нужно настроить поддержку Redis в Python и Celery. Вновь зайдите в виртуальное окружение и установите следующие пакеты:
@@ -24,7 +26,11 @@ python3 manage.py runserver
 python3 manage.py makemigrations
 python3 manage.py shell
 quit()
-python manage.py runapscheduler
+python3 manage.py runapscheduler
+
+python3 manage.py makemessages -l ru
+python3 manage.py compilemessages
+
 
 Для запуска задач по расписанию, а именно это нам и понадобится сейчас, необходимо запускать Celery с флагом -B, который позволяет запускать периодические задачи:
 $ celery -A NewsPaper worker -l INFO -B
@@ -179,3 +185,4 @@ python manage.py dumpdata --format=xml sample_app > sampledata.xml
 python manage.py flush
 
 Если у вас несколько баз данных, то можно указать всё тот же параметр --database и очистить какую-то конкретную БД.
+
