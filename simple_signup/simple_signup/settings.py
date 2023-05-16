@@ -149,8 +149,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #LOGIN_URL = 'sign/login/' #предыдущая версия
 LOGIN_URL = '/accounts/login/'
-SITE_ID = 1
-
 LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_EMAIL_REQUIRED = True
@@ -162,3 +160,19 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 #Чтобы allauth распознал нашу форму как ту, что должна выполняться вместо формы по умолчанию, необходимо добавить
 # строчку в файл настроек проекта settings.py:
 ACCOUNT_FORMS = {'signup': 'sign.models.BasicSignupForm'}
+#******************************************************************
+
+EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
+EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый
+EMAIL_HOST_USER = 'svetlakov.dmtry'  # ваше имя пользователя, например, если ваша почта user@yandex.ru,
+# то сюда надо писать user, иными словами, это всё то что идёт до собаки
+EMAIL_HOST_PASSWORD = 'uxjcqkloyvworuqz'  # пароль от почты
+EMAIL_USE_SSL = True  # Яндекс использует ssl, подробнее о том, что это,
+# почитайте в дополнительных источниках, но включать его здесь обязательно
+#************************************************************************
+DEFAULT_FROM_EMAIL = 'svetlakov.dmtry@yandex.ru' # здесь указываем уже свою ПОЛНУЮ почту,
+# с которой будут отправляться письма
+
+SITE_ID = 1
+# изменяем настройки так, как это было в документации https://django-allauth.readthedocs.io/en/latest/installation.html
+

@@ -5,6 +5,8 @@ from django import forms
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 
+from django.db import models
+
 
 class BaseRegisterForm(UserCreationForm):
     email = forms.EmailField(label = "Email")
@@ -24,10 +26,16 @@ class BaseRegisterForm(UserCreationForm):
 #Добавим следующий код в файл, например, sign/models.py.
 # В идеале, конечно, скрипты, относящиеся к формам, нужно хранить в отдельном файле forms.py,
 # но для нас сейчас это не является принципиальным.
-class BasicSignupForm(SignupForm):
 
+
+class BasicSignupForm(SignupForm):
     def save(self, request):
         user = super(BasicSignupForm, self).save(request)
         basic_group = Group.objects.get(name='basic')
         basic_group.user_set.add(user)
         return user
+
+
+class OneTimeCode(models.Model):
+    code = models.CharField(max_length=255, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
