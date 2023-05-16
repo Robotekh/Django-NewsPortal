@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e4554b1-8e78-4afc-b75e-2d953af9dc64" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/protect/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/protect/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/protect/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/protect/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/sign/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/sign/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/sign/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/sign/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/sign/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/sign/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/sign/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/sign/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/simple_signup/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/simple_signup/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple_signup/templates/protect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/simple_signup/templates/protect/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="9e4554b1-8e78-4afc-b75e-2d953af9dc64" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
