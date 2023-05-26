@@ -44,7 +44,7 @@ def one_time(request):
     print(username)
     if OneTimeCode.objects.filter(user=request.user.id).exists():
         if OneTimeCode.objects.filter(user=request.user.id)[0].code == code:
-            premium_group = Group.objects.get(name='premium')
+            premium_group = Group.objects.get()
             if not request.user.groups.filter(name='premium').exists():
                 premium_group.user_set.add(user)
         else:

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,6 +77,7 @@ TEMPLATES = [
 
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -159,7 +161,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 #Чтобы allauth распознал нашу форму как ту, что должна выполняться вместо формы по умолчанию, необходимо добавить
 # строчку в файл настроек проекта settings.py:
-ACCOUNT_FORMS = {'signup': 'sign.models.BasicSignupForm'}
+ACCOUNT_FORMS = {'protect': 'protect.models.BasicSignupForm'}
 #******************************************************************
 
 EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же
@@ -175,4 +177,7 @@ DEFAULT_FROM_EMAIL = 'svetlakov.dmtry@yandex.ru' # здесь указываем
 
 SITE_ID = 1
 # изменяем настройки так, как это было в документации https://django-allauth.readthedocs.io/en/latest/installation.html
+#*********************************************************************************************
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

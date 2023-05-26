@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 @shared_task
 def complete_order(oid):
-    order = Order.objects.get(pk = oid)
+    order = Order.objects.get()
     order.complete = True
     order.save()
 

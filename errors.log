@@ -9,3 +9,216 @@
 2023-04-19 06:46:15,595 WARNING "GET /news2/ HTTP/1.1" 404 2527 /home/i/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py None
 2023-04-19 06:47:01,006 WARNING Not Found: /news2/ /home/i/.local/lib/python3.10/site-packages/django/utils/log.py None
 2023-04-19 06:47:01,007 WARNING "GET /news2/ HTTP/1.1" 404 2527 /home/i/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py None
+2023-05-19 10:42:50,956 ERROR Internal Server Error: /accounts/signup/ /home/i/.local/lib/python3.10/site-packages/django/utils/log.py (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'svetlakov'"), <traceback object at 0x7f480eada700>)
+Traceback (most recent call last):
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/decorators.py", line 20, in wrap
+    resp = function(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/decorators/debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 234, in dispatch
+    return super(SignupView, self).dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 77, in dispatch
+    response = super(RedirectAuthenticatedUserMixin, self).dispatch(
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 207, in dispatch
+    return super(CloseableSignupMixin, self).dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 105, in post
+    response = self.form_valid(form)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 248, in form_valid
+    self.user = form.save(self.request)
+  File "/home/i/Загрузки/NewsPaper/news/models.py", line 111, in save
+    user = super(BasicSignupForm, self).save(request)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/forms.py", line 441, in save
+    self._send_account_already_exists_mail(request)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/forms.py", line 464, in _send_account_already_exists_mail
+    get_adapter(request).send_mail(
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/adapter.py", line 140, in send_mail
+    msg.send()
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/mail/message.py", line 255, in get_connection
+    self.connection = get_connection(fail_silently=fail_silently)
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/mail/__init__.py", line 50, in get_connection
+    klass = import_string(backend or settings.EMAIL_BACKEND)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'svetlakov'
+2023-05-19 10:42:50,960 ERROR "POST /accounts/signup/ HTTP/1.1" 500 171720 /home/i/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py None
+2023-05-19 10:44:25,582 ERROR Internal Server Error: /accounts/signup/ /home/i/.local/lib/python3.10/site-packages/django/utils/log.py (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'svetlakov'"), <traceback object at 0x7fde26d57c80>)
+Traceback (most recent call last):
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/decorators.py", line 20, in wrap
+    resp = function(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/decorators/debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 234, in dispatch
+    return super(SignupView, self).dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 77, in dispatch
+    response = super(RedirectAuthenticatedUserMixin, self).dispatch(
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 207, in dispatch
+    return super(CloseableSignupMixin, self).dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 105, in post
+    response = self.form_valid(form)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 248, in form_valid
+    self.user = form.save(self.request)
+  File "/home/i/Загрузки/NewsPaper/news/models.py", line 111, in save
+    user = super(BasicSignupForm, self).save(request)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/forms.py", line 441, in save
+    self._send_account_already_exists_mail(request)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/forms.py", line 464, in _send_account_already_exists_mail
+    get_adapter(request).send_mail(
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/adapter.py", line 140, in send_mail
+    msg.send()
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/mail/message.py", line 255, in get_connection
+    self.connection = get_connection(fail_silently=fail_silently)
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/mail/__init__.py", line 50, in get_connection
+    klass = import_string(backend or settings.EMAIL_BACKEND)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'svetlakov'
+2023-05-19 10:44:25,589 ERROR "POST /accounts/signup/ HTTP/1.1" 500 171717 /home/i/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py None
+2023-05-19 10:50:33,905 ERROR Internal Server Error: /accounts/login/ /home/i/.local/lib/python3.10/site-packages/django/utils/log.py (<class 'django.db.utils.IntegrityError'>, IntegrityError('UNIQUE constraint failed: account_emailaddress.email'), <traceback object at 0x7f45bcc5a8c0>)
+Traceback (most recent call last):
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/utils.py", line 313, in send_email_confirmation
+    email_address = EmailAddress.objects.get_for_user(user, email)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/managers.py", line 54, in get_for_user
+    ret = self.get(user=user, email__iexact=email)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/query.py", line 637, in get
+    raise self.model.DoesNotExist(
+allauth.account.models.EmailAddress.DoesNotExist: EmailAddress matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/query.py", line 916, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/query.py", line 637, in get
+    raise self.model.DoesNotExist(
+allauth.account.models.EmailAddress.DoesNotExist: EmailAddress matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: account_emailaddress.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/i/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/decorators/debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 149, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 77, in dispatch
+    response = super(RedirectAuthenticatedUserMixin, self).dispatch(
+  File "/home/i/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 105, in post
+    response = self.form_valid(form)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/views.py", line 162, in form_valid
+    return form.login(self.request, redirect_url=success_url)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/forms.py", line 196, in login
+    ret = perform_login(
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/utils.py", line 168, in perform_login
+    response = adapter.pre_login(request, user, **hook_kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/adapter.py", line 412, in pre_login
+    send_email_confirmation(request, user, signup=signup, email=email)
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/utils.py", line 324, in send_email_confirmation
+    email_address = EmailAddress.objects.add_email(
+  File "/home/i/.local/lib/python3.10/site-packages/allauth/account/managers.py", line 19, in add_email
+    email_address, created = self.get_or_create(
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/query.py", line 923, in get_or_create
+    return self.create(**params), True
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1820, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/i/.local/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: account_emailaddress.email
+2023-05-19 10:50:33,912 ERROR "POST /accounts/login/ HTTP/1.1" 500 249833 /home/i/.local/lib/python3.10/site-packages/django/core/servers/basehttp.py None

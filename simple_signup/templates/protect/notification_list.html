@@ -1,0 +1,71 @@
+{% extends 'protect/base.html' %}
+{% block content %}
+    {% for n in nots %}
+        <form enctype="multipart/form-data" method="POST" class="post">{% csrf_token %}
+            <div class="date">
+                <p>Опубликовано: {{ n.datetime }}</p>
+            </div>
+            <h1><a href="">{{ n.header }}</a></h1>
+            {% for c in cont %}
+                {% if c.id_notification == n.id %}
+                    {% if c.contype == "текст" %}
+                        <div ><textarea name='ident{{ c.id }}' rows="8" cols="100">{{ c.text }}</textarea></div>
+                    {% endif %}
+                    {% if c.contype == "картинка" %}
+                        {% if c.image %}
+                            <div >
+                            <img src="{{ c.image.url }}" width="500px">
+                            <p>Оригинальный размер картинки  {{ c.image.width }}x{{ c.image.height }}</p>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    {% if c.contype == "файл" %}
+                        {% if c.file %}
+                            <div >
+                            <a href="/media/{{ c.file }}">Файл</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    {% if c.contype == "видео" %}
+                        {% if c.video %}
+                            <div >
+                            <video width='800' controls>
+                            <source src='{{ MEDIA_URL }}{{ c.video }}' type='video/mp4'>
+                            Your browser does not support the video tag.
+                            </video>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% for r in notreply %}
+                    {% if r.notification_id == n.id %}
+                        {% for repl in reply %}
+                            {% if repl.id == r.reply_id %}
+                            <div>Отклик пользователя:{{repl.user_name}}</div>
+                            <div><textarea name='replytext{{ c.id }}' rows="2" cols="100">{{ repl.text }}
+                            </textarea></div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </form>
+            {% if not is_not_premium %}
+            <form enctype="multipart/form-data" method="POST" class="post-form">{% csrf_token %}
+                <textarea name='reply' rows="4" cols="100"></textarea>
+                <button type="submit" name="create_reply" value="{{ n.id }}">Оставить отклик</button>
+            </form>
+            {% endif %}
+    {% endfor %}
+
+    {% if is_not_premium %}
+    <div> Ваш аккаунт не активирован, для того чтобы создавать и редактировать объявления зайдите в личный кабинет</div>
+    {% endif %}
+    {% if not is_not_premium %}
+        <h3><a href="/not/add/">Создать объявление</a></h3>
+        <h3><a href="/reply/">Страница с вашими откликами</a></h3>
+    {% endif %}
+<h3><a href="/cabinet/">Личный кабинет</a></h3>
+
+
+{% endblock %}

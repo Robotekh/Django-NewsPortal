@@ -62,7 +62,7 @@ class PostsList(ListView):
 
     # добавляем функцию для кэширования страницы
     def get_object(self, *args, **kwargs):  # переопределяем метод получения объекта, как ни странно
-        obj = cache.get(f'post_list-{self.kwargs["pk"]}', None)  # кэш очень похож на словарь,
+        obj = cache.get(f'post_list-{self.kwargs["pk"]}')  # кэш очень похож на словарь,
         # и метод get действует так же. Он забирает значение по ключу, если его нет, то забирает None.
         # если объекта нет в кэше, то получаем его и записываем в кэш
         if not obj:
@@ -81,7 +81,7 @@ class PostDetail(DetailView):
 
     # добавляем функцию для кэширования страницы
     def get_object(self, *args, **kwargs):  # переопределяем метод получения объекта, как ни странно
-        obj = cache.get(f'post_detail-{self.kwargs["pk"]}', None)  # кэш очень похож на словарь,
+        obj = cache.get(f'post_detail-{self.kwargs["pk"]}')  # кэш очень похож на словарь,
         # и метод get действует так же. Он забирает значение по ключу, если его нет, то забирает None.
         # если объекта нет в кэше, то получаем его и записываем в кэш
         if not obj:
@@ -169,7 +169,7 @@ class CategoryListView(ListView):
 @login_required
 def upgrade_me(request):
     user = request.user
-    premium_group = Group.objects.get(name='authors')
+    premium_group = Group.objects.get()
     if not request.user.groups.filter(name='authors').exists():
         premium_group.user_set.add(user)
     return redirect('/news/')
@@ -177,7 +177,7 @@ def upgrade_me(request):
 @login_required
 def subscribe(request, pk):
     user = request.user
-    category = Category.objects.get(id=pk)
+    category = Category.objects.get()
     category.subscribers.add(user)
 
     message = 'Вы успешно подписались на рассылку новостей категорий'
@@ -197,7 +197,7 @@ class Index(View):
             'timezones': pytz.common_timezones  # добавляем в контекст все доступные часовые пояса
         }
 
-        return HttpResponse(render(request, 'index.html', context))
+        return HttpResponse(render(request, 'cabinet.html', context))
 
     #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами ранее middleware
     def post(self, request):

@@ -1,0 +1,77 @@
+{% extends 'protect/base.html' %}
+{% block content %}
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="post">
+                    <form enctype="multipart/form-data" method="POST" class="post-form">{% csrf_token %}
+                        <label for="titl">Введите заголовок объявления</label>
+                        <input id="titl" type="text" name="titl" value='{{ titl }}'>
+                        {% if check_title %}
+                        <p>Заголовок объявления пустой, введите заголовок объявления.</p>
+                        {% endif %}
+                        {% for c in cont %}
+                            {% if c.contype == "текст" %}
+                                <textarea name='ident{{ c.id }}' rows="8">{{ c.text|linebreaksbr }}</textarea>
+                                <button type="submit" name="but2" value='{{ c.id }}'>Удалить</button>
+                            {% endif %}
+                            {% if c.contype == "картинка" %}
+                                {% if c.image == "" %}
+                                <p><input  type="file" name='image{{ c.id }}' multiple accept="image/*">
+                                <button type="submit" name="addimage" value='{{ c.id }}'>Добавить картинку</button>
+                                    {% endif %}
+                                    {% if c.image %}
+                                        <div >
+                                        <img src="{{ c.image.url }}" width="500px">
+                                        <p>Оригинальный размер картинки  {{ c.image.width }}x{{ c.image.height }}</p>
+                                        </div>
+                                    {% endif %}
+                                    <button type="submit" name="dellimage" value='{{ c.id }}'>Удалить</button>
+                            {% endif %}
+                            {% if c.contype == "файл" %}
+                                {% if c.file == "" %}
+                                <p><input  type="file" name='file{{ c.id }}' multiple accept="*">
+                                <button type="submit" name="addfile" value='{{ c.id }}'>Добавить файл</button>
+                                    {% endif %}
+                                    {% if c.file %}
+                                        <div >
+                                        <a href="/media/{{ c.file }}">Файл</a>
+                                        </div>
+                                    {% endif %}
+                                    <button type="submit" name="dellfile" value='{{ c.id }}'>Удалить</button>
+                            {% endif %}
+                            {% if c.contype == "видео" %}
+                                {% if c.video == "" %}
+                                <p><input  type="file" name='video{{ c.id }}' multiple accept="video/*">
+                                <button type="submit" name="addvideo" value='{{ c.id }}'>Добавить видео</button>
+                                    {% endif %}
+                                    {% if c.video %}
+                                        <div >
+                                        <video width='800' controls>
+                                        <source src='{{ MEDIA_URL }}{{ c.video }}' type='video/mp4'>
+                                        Your browser does not support the video tag.
+                                        </video>
+                                        </div>
+                                    {% endif %}
+                                    <button type="submit" name="dellvideo" value={{ c.id }}>Удалить</button>
+                            {% endif %}
+                        {% endfor %}
+                        <div>
+                        <label for="spisok">Выберите тип контента</label>
+                        <select id="selectID" name="spisok">
+                        <option value='текст'>Текст</option>
+                        <option value='картинка'>Картинка</option>
+                        <option value='видео'>Видео</option>
+                        <option value='файл'>Файл</option>
+                        </select>
+                        <button type="submit" name="add" value="add">Добавить</button>
+                        </div>
+                        <button type="submit" name="create_not" value="create">Создать объявление</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<h3><a href="/">Посмотреть объявления</a></h3>
+{% endblock %}

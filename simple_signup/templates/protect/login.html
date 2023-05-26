@@ -1,5 +1,4 @@
-{% extends "main.html" %}
-
+{% extends 'protect/base.html' %}
 {% block content %}
 <h2> Войти в систему </h2>
 <form method="post" action="{% url 'login' %}">
@@ -17,5 +16,5 @@
 
 <input type="submit" value="Войти">
 </form>
-<button> <a href="/sign/signup"> Регистрация </a></button>
+<button> <a href="/signup/"> Регистрация </a></button>
 {% endblock %}

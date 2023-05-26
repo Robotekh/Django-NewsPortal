@@ -5,7 +5,7 @@ from .models import Order
 from datetime import datetime
 
 class IndexView(TemplateView):
-    template_name = "board/index.html"
+    template_name = "board/cabinet.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,7 +26,7 @@ class NewOrderView(CreateView):
         
 
 def take_order(request, oid):
-    order = Order.objects.get(pk=oid)
+    order = Order.objects.get()
     order.time_out = datetime.now()
     order.save()
     return redirect('/')

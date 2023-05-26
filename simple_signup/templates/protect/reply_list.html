@@ -1,0 +1,24 @@
+{% extends 'protect/base.html' %}
+{% block content %}
+{% for n in nots %}
+    {% for nr in notreply %}
+        {% if nr.notification_id == n.id %}
+            {% for repl in reply %}
+                {% if repl.id == nr.reply_id %}
+                <div>Объявление: {{n.header}}</div>
+                <div>Дата публикации: {{n.datetime}}</div>
+                <form enctype="multipart/form-data" method="POST" class="post-form">{% csrf_token %}
+                    <div>Отклик пользователя:{{repl.user_name}}</div>
+                <div><textarea name='replytext{{ c.id }}' rows="2" cols="100">{{ repl.text }}
+                </textarea>
+                <button type="submit" name="accept_reply" value="{{ repl.id }}">Принять отклик</button>
+                    <button type="submit" name="delete_reply" value="{{ repl.id }}">Удалить отклик</button>
+                     </form>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+<h3><a href="/">Посмотреть объявления</a></h3>
+{% endblock %}

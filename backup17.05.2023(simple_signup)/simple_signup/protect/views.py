@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login
 from sign.models import OneTimeCode
 
 class IndexView(LoginRequiredMixin, TemplateView):
-    template_name = 'protect/index.html'
+    template_name = 'protect/cabinet.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
